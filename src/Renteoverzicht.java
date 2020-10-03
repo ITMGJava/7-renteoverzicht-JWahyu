@@ -75,8 +75,8 @@ public class Renteoverzicht {
         // Einde.
         System.out.printf("%nDank je wel voor je geld %s! Maak maar daar geen zorgen om hoor... ;)%n", inputName);
         System.out.printf("%n――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――%n");
-        System.out.printf("$$$ Tot de volgende keer bij de Totaal-Niet-Corrupte bank! Jouw sessie is hierbij beëindigd. $$$%n");
-        System.out.printf("――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――%n");
+        System.out.print("$$$ Tot de volgende keer bij de Totaal-Niet-Corrupte bank! Jouw sessie is hierbij beëindigd. $$$");
+        System.out.printf("%n――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――%n");
     }
 }
 
