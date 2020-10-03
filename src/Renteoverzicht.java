@@ -16,57 +16,60 @@ public class Renteoverzicht {
                 "€ 600,- t/m € 1000,- → 1%% rente%n" +
                 "Meer dan € 1000,- → 0,5%% rente%n");
 
+        var input = new Scanner(System.in);
+
         // Invoer naam.
         System.out.printf("%nAllereerst wil ik weten hoe je heet! Dus wat is je naam?%n");
-        var input = new Scanner(System.in);
         var inputName = input.nextLine();
 
         // Invoer inleg en/of uitvoer overzicht.
+        System.out.printf("%nVoor hoeveel jaar wens je te beleggen %s? %n", inputName);
+        int yearInput = input.nextInt();
+        int year;
         boolean check = true;
         do {
             // Invoer inleg.
-            System.out.printf("%nHoeveel wil je betalen %s?%n", inputName);
+            System.out.printf("En hoeveel wil je betalen %s?%n", inputName);
             var investment = input.nextDouble();
 
             // Incorrecte invoer inleg.
-            int year;
             if (investment < 100) {
                 check = false;
                 System.out.printf("Slechts € %.2f? Niet zo gierig doen hé %s! Je moet wel minimaal € 100,- dokken!%n", investment, inputName);
+            }
 
-//            } else if (investment >= 100) {
-//                check = true;
-//                System.out.printf("%nEn voor hoeveel jaar wens je te beleggen %s? %n", inputName);
-//                var year = input.nextDouble();
-//                for (year = 1; year <= 10; year++) {
-//                    System.out.format("Jaar %d: € %.2f %n", year, investment*=1.03);
-//                }
-
-                // Inleg tussen 100 < 300.
-            } else if (investment >= 100 && investment < 300) {
+            // Inleg tussen 100 < 300.
+            else if (investment >= 100 && investment < 300) {
                 check = true;
-                System.out.printf("%nAardig begin, %s! Voor je bedrag van € %.2f geniet je van 3%% rente. Hoe rijk ben je de komende 10 jaar? Zo rijk dus:%n", inputName, investment);
-                for (year = 1; year <= 10; year++) {
+                System.out.printf("%nAardig begin, %s! Voor je bedrag van € %.2f geniet je van 3%% rente. Hoe rijk ben je de komende %d jaar? Zo rijk dus:%n", inputName, investment, yearInput);
+                for (year = 1; year <= yearInput; year++) {
                     System.out.format("Jaar %d: € %.2f %n", year, investment*=1.03);
                 }
+            }
 
-                // Inleg van 300 - 599.
-            } else if (investment >= 300 && investment < 599) {
+            // Inleg van 300 - 599.
+            else if (investment >= 300 && investment < 599) {
                 check = true;
-                System.out.printf("%nDat is mooi, %s! Voor je bedrag van € %.2f geniet je van 2%% rente. Hoe rijk ben je de komende 10 jaar? Zo rijk dus:%n", inputName, investment);
-                for (year = 1; year <= 10; year++) {
+                System.out.printf("%nDat is mooi, %s! Voor je bedrag van € %.2f geniet je van 2%% rente. Hoe rijk ben je de komende %d jaar? Zo rijk dus:%n", inputName, investment, yearInput);
+                for (year = 1; year <= yearInput; year++) {
                     System.out.format("Jaar %d: € %.2f %n", year, investment*=1.02);
                 }
-            } else if (investment >= 600 && investment < 1000) {
+            }
+
+            // Inleg van 600 - 1000.
+            else if (investment >= 600 && investment <= 1000) {
                 check = true;
-                System.out.printf("%nDat is uitstekend, %s! Voor je bedrag van € %.2f geniet je van 1%% rente. Hoe rijk ben je de komende 10 jaar? Zo rijk dus:%n", inputName, investment);
-                for (year = 1; year <= 10; year++) {
+                System.out.printf("%nDat is uitstekend, %s! Voor je bedrag van € %.2f geniet je van 1%% rente. Hoe rijk ben je de komende %d jaar? Zo rijk dus:%n", inputName, investment, yearInput);
+                for (year = 1; year <= yearInput; year++) {
                     System.out.format("Jaar %d: € %.2f %n", year, investment*=1.01);
                 }
-            } else if (investment > 1000) {
+            }
+
+            // Inleg groter dan 1000.
+            else if (investment > 1000) {
                 check = true;
-                System.out.printf("%nWow kassa, %s! Voor je bedrag van € %.2f geniet je van 0,5%% rente. Hoe rijk ben je de komende 10 jaar? Zo rijk dus:%n", inputName, investment);
-                for (year = 1; year <= 10; year++) {
+                System.out.printf("%nWow kassa, %s! Voor je bedrag van € %.2f geniet je van 0,5%% rente. Hoe rijk ben je de komende %d jaar? Zo rijk dus:%n", inputName, investment, yearInput);
+                for (year = 1; year <= yearInput; year++) {
                     System.out.format("Jaar %d: € %.2f %n", year, investment*=1.005);
                 }
             }
